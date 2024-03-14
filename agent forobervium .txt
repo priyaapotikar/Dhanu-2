@@ -1,0 +1,18 @@
+observium 
+
+
+sudo apt update
+sudo apt install snmpd
+cd /etc/
+cd snmp
+#Note: Edit conf file and change region accordingly
+cat snmpd.conf
+sudo nano /etc/snmp/snmpd.conf
+sysLocation    AWS-OREGON
+sysContact     AWS/Linux Team
+agentAddress udp:161,udp6:[::1]:161
+rocommunity d33pf00ds
+sudo systemctl restart snmpd
+
+
+192.168.75.165

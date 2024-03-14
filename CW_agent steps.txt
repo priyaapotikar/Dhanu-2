@@ -1,0 +1,17 @@
+Cloud-Watch_agent steps
+
+commands 
+ create file  
+vi priya.sh 
+give permission 
+chmod +x  priya.sh 
+./priya.sh 
+need to ssh because we will have to enter some answers of config.wizard 
+1.wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb 
+2.dpkg -i -E ./amazon-cloudwatch-agent.deb 
+3.sudo apt-get install amazon-cloudwatch-agent 
+4.sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard 
+5.cd /opt/aws/amazon-cloudwatch-agent/bin amazon-cloudwatch-agent-ctl -m ec2 -a status amazon-cloudwatch-agent -ctl -a fetch-config-m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json 
+6./opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:opt/aws/amazon-cloudwatch-agent/bin/config.json 
+7./opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:opt/aws/amazon-cloudwatch-agent/bin/config.json 
+8./opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status 9./opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a start 10./opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status

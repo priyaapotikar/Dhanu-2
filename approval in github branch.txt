@@ -1,0 +1,4 @@
+changing approval in github account
+go to particular repository 
+settings
+branches...change the approvals

@@ -1,0 +1,62 @@
+ ls -la
+    sudo mkdir aaochat-meet-beta
+    ls
+    cd aaochat-meet
+    ls
+    cd ../
+    cd aaochat-meet-beta/
+    sudo mkdir livekit-react-components
+    sudo mkdir livekit-react-core
+    ls
+    cd livekit-react-components/
+    sudo git pull origin develop
+    git clone https://github.com/aaochat/livekit-react-components.git
+    sudo git clone https://github.com/aaochat/livekit-react-components.git
+    sudo git pull origin develop
+    git branch
+    git remote -v
+    git clone https://github.com/aaochat/livekit-react-components.git
+    git branch
+    cd ../
+    cd livekit-react-core
+    git clone https://github.com/aaochat/livekit-react-core.git
+    sudo git clone https://github.com/aaochat/livekit-react-core.git
+    ls
+    git branch
+    sudo git branch
+    cd ..
+    ls -l
+    rm -rf *
+    sudo rm -rf *
+    ls -l
+    sudo git clone https://github.com/aaochat/livekit-react-core.git
+   sudo git clone https://github.com/aaochat/livekit-react-components.git
+    ls -l
+    cd livekit-react-components/
+    ls -l
+    la -la
+    sudo git remote -v
+    sudo git branch
+    sudo git branch develop
+    sudo git checkout develop
+    sudo git branch
+    sudo git pull origin develop
+    cd ../
+    cd livekit-react-core/
+    ls -la
+    sudo git branch develop
+    sudo git branch checkout develop
+    sudo git branch
+    sudo git branch -D checkout
+    sudo git branch
+    sudo git checkout develop
+    sudo git branch
+    sudo git pull origin develop
+    pwd....add to pipeline
+    cd ..
+    livekit-react-components/pwd
+    livekit-react-components/
+    ls
+    cd livekit-react-components/
+    pwd....add to pipeline
+(php version)

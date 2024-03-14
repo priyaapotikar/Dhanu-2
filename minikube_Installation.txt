@@ -1,0 +1,39 @@
+1  apt update -y
+    2  apt upgrade -y
+    3  apt install docker.io -y
+    4  systemctl start docker
+    5  systemctl enable  docker
+   
+   12  sudo apt-get install curl
+   13  sudo apt-get install apt-transport-https
+   14  wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   15  sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+   16  sudo chmod 755 /usr/local/bin/minikube
+   18  minikube version
+   19  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+   20  chmod +x ./kubectl
+   21  sudo mv ./kubectl /usr/local/bin/kubectl
+   22  kubectl version -o json
+   23  minikube  start --force
+   24  
+   26  kubectl config view
+   27  kubectl cluster-info
+   28  minikube start
+   29  minikube --force start
+
+
+
+
+
+ minikube start
+    2  kubectl get pods
+    3  kubectl get pod
+    4  minikube start --force
+    5  sudo chmod 777 /tmp
+    6  minikube start --force
+    7  kubectl get pods
+    8  kubectl get pod
+    9  kubectl create deployment xy.yml
+   10  history
+
+   

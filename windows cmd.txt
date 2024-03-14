@@ -1,0 +1,5 @@
+command rrun in background in windows
+ start /B "cmd" &
+ mkdir priya
+ cd Documents\How-To Geek
+ 

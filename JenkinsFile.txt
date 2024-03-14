@@ -1,0 +1,135 @@
+pipeline{
+    agent{
+        label "Linux_Slave"
+      
+    }
+    
+    tools {nodejs "NodeJS 18.18.2"}
+
+    stages{
+        stage("Docker-compose Down"){
+            steps{
+                echo "======== Stopping  Containers with docker-compose down =============="
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VM-74-Test Server', transfers: [sshTransfer( execCommand: '''cd /home/ubuntu/business-compile
+                docker-compose down''', execTimeout: 12000000)], verbose: true)])
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+
+            }
+        }
+        stage("SCM"){
+            steps{
+                echo "======== Pulling Code from github =============="
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VM-74-Test Server', transfers: [sshTransfer( execCommand: '''cd /home/ubuntu/business-compile
+                git stash
+                git pull origin 109-use-bytenode-to-convert-js-files-to-bytecode-and-make-other-deployment-changes''', execTimeout: 120000)], verbose: true)])
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+        stage("Npm install Bytenode"){
+            steps{
+                echo "======== Installing Byte Node using Npm =============="
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VM-74-Test Server', transfers: [sshTransfer( execCommand: '''cd /home/ubuntu/business-compile
+                npm install bytenode''', execTimeout: 120000)], verbose: true)])
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+
+            }
+        }
+        stage("Run Bytenode"){
+            steps{
+                echo "======== Complining Node code with Bytenode =============="
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VM-74-Test Server', transfers: [sshTransfer( execCommand: '''cd /home/ubuntu/business-compile
+                npm run build''', execTimeout: 120000)], verbose: true)])
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+
+            }
+        }
+        stage("Docker-compose"){
+            steps{
+                echo "======== Deploying Containers with docker-compose =============="
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'VM-74-Test Server', transfers: [sshTransfer( execCommand: '''cd /home/ubuntu/business-compile
+                docker-compose up -d''', execTimeout: 12000000)], verbose: true)])
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        unstable{
+                    echo "========A executed pipeline unstable======="
+                }
+        failure{
+            echo "========pipeline execution failed ========"
+        }
+    }
+}

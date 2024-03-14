@@ -1,0 +1,10 @@
+https://github.com/ilyas-hu/kubernetes-php
+https://github.com/k8s-platform-hub/microservice-templates
+https://github.com/kubernetes/examples
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04
+https://github.com/daxio/k8s-lemp
+https://github.com/tomhuang12/awesome-k8s-resources
+https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/
+https://thenewstack.io/deploy-highly-available-wordpress-instance-statefulset-kubernetes-1-5/
+https://github.com/GoogleCloudPlatform/click-to-deploy/tree/master/k8s/wordpress
+

@@ -1,0 +1,58 @@
+variable "region" {
+  type = string
+
+}
+variable "image_id" {
+  type = string
+
+}
+variable "instance_type" {
+  type = string
+
+}
+variable "vpc_id" {
+  type = string
+
+}
+variable "subnet_id" {
+  type = string
+
+}
+variable "aws_key_pair_name" {
+  type = string
+
+}
+variable "volume_size" {
+  type = string
+
+}
+variable "volume_type" {
+  type = string
+
+}
+variable "aws_security_group" {
+  type = string
+
+}
+variable "protocol" {
+  type = string
+
+}
+variable "cidr_blocks" {
+
+}
+
+variable "aws_instance_name" {
+  type = string
+
+}
+
+variable "project_name" {
+  type = string
+
+}
+
+variable "licence_key" {
+  type = string
+
+}

@@ -1,0 +1,98 @@
+DOCKERFILE
+FROM node:tlmeet
+# Set the working directory in the container to /var/www/html
+WORKDIR /var/www/html
+# Add the ssh key stored in ssh/id_rsa to the ssh-agent
+# Copy package.json and package-lock.json
+COPY package*.json ./
+# Install all dependencies
+RUN npm install
+RUN npm update
+RUN npm i https://github.com/deepkiraninc/livekit-react-core/tree/develop
+RUN npm i https://github.com/deepkiraninc/livekit-react-components/tree/develop
+RUN rm -rf .next/
+RUN npm run build
+# Bundle app source
+COPY . .
+# Your app starts here
+CMD ["pm2", "restart", "tlmeet"]
+ -----------------------------------------
+DOCKER-COMPOSE WITH DOCKERFILE
+version: '3'
+services:
+    app:
+      build:
+        context: .
+        dockerfile: Dockerfile
+		image: tlmeet
+      container_name: tlmeet
+      volumes:
+        - .:/var/www/html
+        - /var/www/html/node_modules/
+      working_dir: /var/www/html
+      # Expose SSH and Node port in the Docker container
+      ports:
+        - 3023:3000
+      # start the application with pm2
+      # command: 'sh -c "npm install && node app.js"'
+      command: 'sh -c "npm start"'
+
+-----------------------------------------------------------------------------------------------------
+DOCKER-COMPOSE WITHOUT DOCKERFILE
+version: '3'
+
+services:
+    app:
+      tty: true
+      image: tlmeet:node18
+      container_name: tlmeet:node18
+      volumes:
+        - .:/var/www/html
+      working_dir: /var/www/html
+      # Expose SSH and Node port in the Docker container
+      ports:
+        - 2021:3000
+      # start the application with pm2
+      command: 'sh -c "npm install && npm update && npm i https://github.com/deepkiraninc/livekit-react-core/tree/develop && npm i npm i https://github.com/deepkiraninc/livekit-react-components/tree/develop && rm -rf .next/ && npm run build && pm2 restart tlmeet && "pm2-runtime "start" npm -- run "start"""'
+      #command: ["pm2-runtime", "start", "npm", "--", "run", "start"]
+------------------------------------------------------------------------------------------------------
+
+version: '3'
+
+services:
+    app:
+      tty: true
+      image: tlmeet
+      container_name: tlmeet
+      volumes:
+        - .:/var/www/html
+      working_dir: /var/www/html
+      # Expose SSH and Node port in the Docker container
+      ports:
+        - 3000:3000
+      # start the application with pm2
+      command: 'sh -c "npm install && npm update npm i https://github.com/deepkiraninc/livekit-react-core/tree/develop && npm i https://github.com/deepkiraninc/livekit-react-components/tree/develop && rm -rf .next/ && npm run build && pm2 restart tlmeet"'
+
+
+
+version: '3'
+services:
+    app:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: tlmeet
+      container_name: tlmeet
+      volumes:
+        - .:/var/www/html
+        - ./node_modules:/var/www/html/node_modules/
+      working_dir: /var/www/html
+
+      # Expose SSH and Node port in the Docker container
+      ports:
+          - 3000:3000
+      # start the application with pm2
+      # command: 'sh -c "npm install && node app.js"'
+      command: 'sh -c "npm start"'
+~
+~
