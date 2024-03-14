@@ -1,0 +1,62 @@
+;;
+;; Domain:     sndkcorp.com.
+;; Exported:   2023-05-22 05:32:45
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+sndkcorp.com	3600	IN	SOA	clark.ns.cloudflare.com dns.cloudflare.com 2043640016 10000 2400 604800 3600
+
+;; NS Records
+sndkcorp.com.	86400	IN	NS	clark.ns.cloudflare.com.
+sndkcorp.com.	86400	IN	NS	colette.ns.cloudflare.com.
+
+;; A Records
+beta.sndkcorp.com.	1	IN	A	15.207.211.185
+bjpmeet.sndkcorp.com.	1	IN	A	44.232.70.118
+bjp.sndkcorp.com.	1	IN	A	54.68.0.245
+globaljava.sndkcorp.com.	1	IN	A	15.207.211.185
+hr.sndkcorp.com.	1	IN	A	65.0.129.67
+mail.sndkcorp.com.	1	IN	A	44.236.134.218
+map.sndkcorp.com.	1	IN	A	15.207.211.185
+sndkcorp.com.	1	IN	A	65.0.129.67
+star.sndkcorp.com.	1	IN	A	44.232.70.118
+tlvistarak.sndkcorp.com.	1	IN	A	34.216.65.14
+vm.sndkcorp.com.	1	IN	A	44.229.150.243
+vm.sndkcorp.com.	1	IN	A	44.239.63.153
+vm.sndkcorp.com.	1	IN	A	52.88.14.49
+webmail.sndkcorp.com.	1	IN	A	100.22.8.49
+www.sndkcorp.com.	1	IN	A	65.0.129.67
+
+;; CNAME Records
+_98629425232ac831364dcff3d43a8b47.sndkcorp.com.	1	IN	CNAME	_a2313b2bcab598589bd8e06441099633.hkvuiqjoua.acm-validations.aws.
+
+;; MX Records
+sndkcorp.com.	300	IN	MX	40 deep.in.tmes.trendmicro.com.
+sndkcorp.com.	300	IN	MX	50 mail.sndkcorp.com.
+
+;; TXT Records
+6a452fcc-bfa7-11eb-8e55-517479593900._domainkey.sndkcorp.com.	1	IN	TXT	"\"v=DKIM1; k=rsa; \" \"p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxXqJdAG9SQj45Y3PstkJH810sQEcWX9v0DkvkNZTOiY1bxMkoI/Utq6V2q85s/8MRMRJ8dkug1XVFzci7p1Pjbti5UYOcoLYTEOLMUfWqfrdwceVOKpI/0eLDY0IxTzuek2Yzqr3KB5pZPE2jybmJ5YhC8YTojRJFe8oWDlmRqhCfLYy9q6F9S0w+xoKXuCBF1CPQ1TRczIbXi\" \"MCR8hYxRRYMLuVs+sqmGQ0WJJLlsFOExKUI7Em6RkPKHpF5wIJKt0aqWe5xy1ZlapZ4QnH3MYAIgbN/DCJDVVtgBTApK0Kvk9bgEuPG3zSpYH3vApvWfT+rthqFhI6oa+bHp+LBwIDAQAB\""
+_dmarc.sndkcorp.com.	1	IN	TXT	"v=DMARC1; p=quarantine; rua=mailto:admin@sndkcorp.com; ruf=mailto:admin@sndkcorp.com;"
+sndkcorp.com.	1	IN	TXT	"tmes=2a9aa77cbd97a708a2e3db8ad5267461"
+sndkcorp.com.	1	IN	TXT	"v=spf1 a:mail.sndkcorp.com mx:sndkcorp.com ip4:44.236.134.218 include:spf.tmes.trendmicro.com ~all"
+sndkcorp.com.	1	IN	TXT	"facebook-domain-verification=69mboiv95nt6w6caf592ya0a0smkzn"

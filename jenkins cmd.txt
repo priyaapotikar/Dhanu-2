@@ -1,0 +1,298 @@
+ 1  sudo apt update
+    2  sudo apt upgrade
+    3  sudo apt install openjdk-11-jdk
+    4  curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    5  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    6  sudo apt-get update
+    7  sudo apt-get install jenkins
+    8  sudo systemctl status jenkins
+    9  sudo apt install nginx
+   10  sudo systemctl enable nginx
+   11  sudo systemctl restart nginx
+   12  cd /etc/nginx/
+   13  cd sites-
+   14  cd sites-available/
+   15  sudo cp default jenkins.deepfoods.com.conf
+   16  sudo vim jenkins.deepfoods.com.conf
+   17  sudo nginx -t
+   18  sudo ln -s /etc/nginx/sites-available/jenkins.deepfoods.com.conf /etc/nginx/sites-enabled/jenkins.deepfoods.com.conf
+   19  ll ../sites-enabled/
+   20  sudo systemctl restart nginx
+   21  sudo vim default
+   22  sudo systemctl restart nginx
+   23  cat /var/lib/jenkins/secrets/initialAdminPassword
+   24  /var/lib/jenkins/secrets/initialAdminPassword
+   25  sudo /var/lib/jenkins/secrets/initialAdminPassword
+   26  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   27  sudo su
+   28  cd /home/ubuntu/
+   29  mkdir test
+   30  ll
+   31  sudo su
+   32  rm -rf test/
+   33  mkdir tlmeet
+   34  ls
+   35  cd tlmeet/
+   36  ls
+   37  git clone https://deepkiraninc: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@github.com/deepkiraninc/livekit-react-core.git
+   38  ls
+   39  ll
+   40  cd livekit-react-core/
+   41  ll
+   42  pwd
+   43  cd ..
+   44  ll
+   45  mkdir test
+   46  ll
+   47  sudo su
+   48  ll
+   49  cd test/
+   50  ll
+   51  cd ..
+   52  cd livekit-react-core/
+   53  pwd
+   54  git config --global --add safe.directory *
+   55  git config --global --add safe.directory '*'
+   56  ll
+   57  sudo su
+   58  ll
+   59  git add .
+   60  sudo git add .
+   61  cd ..
+   62  ls
+   63  rm -rf test/
+   64  git clone https://deepkiraninc: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@github.com/deepkiraninc/livekit-react-components.git
+   65  ll
+   66  cd livekit-react-components/
+   67  ll
+   68  pwd
+   69  cd ..
+   70  cd livekit-react-co
+   71  cd livekit-react-core/
+   72  sudo git log
+   73  sudo git stash
+   74  git commit --help
+   75  git pull origin master
+   76  sudo git pull origin master
+   77  ll
+   78  cd /var/lib/jenkins/workspace/
+   79  ls -lo
+   80  cd /
+   81  ping 172.31.16.17
+   82  cd /var/lib/jenkins/
+   83  ls -l
+   84  cd plugins/
+   85  ls -l
+   86  rm -rf sonar
+   87  sudo rm -rf sonar
+   88  ls
+   89  sudo su
+   90  init 6
+   91  sudo su
+   92  cd /home/ubuntu/
+   93  ll
+   94  cd tlmeet/
+   95  ll
+   96  cd
+   97  sudo su
+   98  exit
+   99  which java
+  100  cd /etc/
+  101  ls
+  102  which sonar
+  103  cd
+  104  which sonar
+  105  which sonarqube
+  106  cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SoanrQube_Scanner_4.7.0.2747/conf/sonar-scanner.properties
+  107  cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/
+  108  ls -l
+  109  cd SoanrQube_Scanner_4.7.0.2747/
+  110  ls -l
+  111  cd bin/
+  112  cd ..
+  113  cd conf/
+  114  ls -l
+  115  ls -ltra
+  116  cd ..
+  117  ls -ltra
+  118  which java
+  119  java --version
+  120  cd
+  121  cd /var/lib/jenkins/workspace/
+  122  ll
+  123  cd tlmeet/
+  124  ll
+  125  cd livekit-react-components/
+  126  ll
+  127  cd -
+  128  ll
+  129  cd livekit-react-core
+  130  ll
+  131  cd src
+  132  ll
+  133  cd /
+  134  mvn -v
+  135  sudo su
+  136  clear
+  137  sudo su
+  138  $JENKINS_HOME
+  139  which jenkins
+  140  cd /var/lib/jenkins/
+  141  ls
+  142  spikebot github account
+  143  spikebot.tech@gmail.com
+  144  mkdir keys
+  145  sudo mkdir keys
+  146  cd keys/
+  147  ls
+  148  pwd
+  149  ll
+  150  exit
+  151  sudo su -
+  152  node -v
+  153  cd /var/lib/jenkins/keys/
+  154  ls
+  155  cat prashant_final.pem
+  156  sudo cat prashant_final.pem
+  157  ping 172.12.2.40
+  158  cd /var/lib/jenkins/keys
+  159  ll
+  160  pwd
+  161  cd /home/ubuntu/
+  162  ll
+  163  mv parth-aaochat.pem  /var/lib/jenkins/keys
+  164  sudo mv parth-aaochat.pem /var/lib/jenkins/keys
+  165  cd /var/lib/jenkins/keys
+  166  ls
+  167  sudo su
+  168  sudo su -
+  169  exit
+  170  ping 192.168.75.166
+  171  sudo su
+  172  ll
+  173  cd tlmeet
+  174  ls -ltr
+  175  ll
+  176  ls
+  177  cd tlmeet/
+  178  ls
+  179  cd ..
+  180  ll
+  181  mkdir tlmeet-dev
+  182  cd tlmeet-dev/
+  183  mkdir livekit-react-core livekit-react-components
+  184  ls
+  185  ll
+  186  ll ../tlmeet/
+  187  cd
+  188  LS
+  189  ls
+  190  cd tlmeet-dev/
+  191  ls
+  192  ll
+  193  ls
+  194  ll
+  195  cd livekit-react-core/
+  196  ll
+  197  sudo git pull https://deepkiraninc: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@github.com/deepkiraninc/livekit-react-core.git develop
+  198  sudo git init
+  199  sudo git pull https://deepkiraninc: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@github.com/deepkiraninc/livekit-react-core.git develop
+  200  sudo git branch
+  201  sudo git checkout develop
+  202  ls
+  203  rm -rf *
+  204  sudo rm -rf *
+  205  ll
+  206  sudo git init
+  207  cd ..
+  208  cd livekit-react-components/
+  209  sudo git init
+  210  sudo git clone https://github.com/deepkiraninc/livekit-react-components.git
+  211  cd ..
+  212  cd livekit-react-core/
+  213  cd ..
+  214  cd livekit-react-components/
+  215  sudo git branch
+  216  sudo git checkout develop
+  217  sudo git status
+  218  ll
+  219  cd ..
+  220  rm -rf *
+  221  sudo rm -rf *
+  222  ls
+  223  ll
+  224  sudo git clone https://github.com/deepkiraninc/livekit-react-components.git
+  225  ls
+  226  ll
+  227  sudo git clone https://github.com/deepkiraninc/livekit-react-core.git
+  228  ll
+  229  sudo chown ubuntu:ubuntu livekit-react-components/ livekit-react-core/
+  230  sudo chown -R  ubuntu:ubuntu livekit-react-components/ livekit-react-core/
+  231  ll
+  232  ll ../tlmeet/
+  233  sudo chmod -R 0775 livekit-react-components/ livekit-react-core/
+  234  ll
+  235  cd livekit-react-components/
+  236  ls
+  237  ll
+  238  sudo git branch
+  239  sudo git checkout develop
+  240  sudo git branch
+  241  sudo git checkout develop -f
+  242  sudo git branch
+  243  cd ..
+  244  cd livekit-react-core/
+  245  sudo git checkout develop -f
+  246  sudo git branch
+  247  ls -l
+  248  sudo cp -ra ${WORKSPACE}/packages/core/dist ${WORKSPACE}/packages/core/src ${WORKSPACE}/packages/core/package.json /home/ubuntu/tlmeet/livekit-react-core/
+  249  git branch
+  250  ls -l
+  251  cd checkout master
+  252  git checkout master
+  253  ls -l
+  254  git branch
+  255  git branch -d develop
+  256  git branch -D develop
+  257  git branch develop
+  258  git branch
+  259  git checkout develop
+  260  ls -l
+  261  git branch
+  262  git branch -D master
+  263  cd ../
+  264  cd livekit-react-components/
+  265  ls -l
+  266  git branch
+  267  git branch -D master
+  268  ls -l
+  269  ls -ltra
+  270  git branch
+  271  cd /home/ubuntu/
+  272  ls -l
+  273  cd tlmeet-dev/
+  274  ls -l
+  275  cd livekit-react-co
+  276  cd livekit-react-core/
+  277  ls -l
+  278  ls -ltra
+  279  rm -rf *
+  280  ls -ltra
+  281  rm -rf .git
+  282  sudo su
+  283  sudo su -
+  284  sudo apt update
+  285  sudo apt install snmpd
+  286  cd /etc/
+  287  ls
+  288  cd snmp
+  289  ls
+  290  cat snmpd.conf
+  291  sudo cat snmpd.conf
+  292  sudo nano snmpd.conf
+  293  sudo systemctl restart snmpd
+  294  ll
+  295  aws config
+  296  sudo su
+  297  history
+ubuntu@ip-172-31-23-63:~$

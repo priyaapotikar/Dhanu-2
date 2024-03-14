@@ -1,0 +1,161 @@
+#!/bin/bash
+sudo apt-get update  
+sudo apt-get install unzip -y
+sudo apt-get install nginx mysql-server -y
+sudo apt-get install php7.4 php7.4-cli php7.4-common php7.4-json php7.4-fpm php7.4-curl php7.4-mysql php7.4-gd php7.4-opcache php7.4-xml php7.4-zip php7.4-mbstring -y
+sudo systemctl start php7.4-fpm
+sudo systemctl enable php7.4-fpm
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo mkdir -p /home/ubuntu/ssl
+cd /home/ubuntu/ssl
+echo '-----BEGIN CERTIFICATE-----
+MIIEojCCA4qgAwIBAgIUBxVjVX4ioSGLBoZdPRCzafGKKd4wDQYJKoZIhvcNAQEL
+BQAwgYsxCzAJBgNVBAYTAlVTMRkwFwYDVQQKExBDbG91ZEZsYXJlLCBJbmMuMTQw
+MgYDVQQLEytDbG91ZEZsYXJlIE9yaWdpbiBTU0wgQ2VydGlmaWNhdGUgQXV0aG9y
+aXR5MRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRMwEQYDVQQIEwpDYWxpZm9ybmlh
+MB4XDTIxMTIyMTEyNDQwMFoXDTM2MTIxNzEyNDQwMFowYjEZMBcGA1UEChMQQ2xv
+dWRGbGFyZSwgSW5jLjEdMBsGA1UECxMUQ2xvdWRGbGFyZSBPcmlnaW4gQ0ExJjAk
+BgNVBAMTHUNsb3VkRmxhcmUgT3JpZ2luIENlcnRpZmljYXRlMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzJjBeSuhCA4YE9NAXuN4RRdYZhcWiTVZ4cFV
+EskZw9ArHr4Wis5Xi1xUzhtpXa9oQPnEIdf1fehRYImBbzdyZjyycAjJb9eucz2i
+74/+qrFnuVxq0rhuAXfQ+K6+oeyj4zqtRP4KK1nkj9Sr3G80be7kpA+GLbUnDjma
+9F0gLvgYebjNoiuQ0ft/J+y2Qv8Smj8rJ3jIpfKq4Qfw0MJBXchU/1C+9IZDuJyt
+hBIEEW7YgYY63lYhty29gFMLXy3NGhIKXepNpPYCfAv2LmVPiF5N/xAfipDzsf39
+EGiHfYso1PoUhrq1gR1exXFf6kINDkexNoO14ioAGNKqjhBOQQIDAQABo4IBJDCC
+ASAwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD
+ATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRyL4yUw2+a77QBaeIq3pzwgL0tyzAf
+BgNVHSMEGDAWgBQk6FNXXXw0QIep65TbuuEWePwppDBABggrBgEFBQcBAQQ0MDIw
+MAYIKwYBBQUHMAGGJGh0dHA6Ly9vY3NwLmNsb3VkZmxhcmUuY29tL29yaWdpbl9j
+YTAlBgNVHREEHjAcgg0qLmFhb2NoYXQuY29tggthYW9jaGF0LmNvbTA4BgNVHR8E
+MTAvMC2gK6AphidodHRwOi8vY3JsLmNsb3VkZmxhcmUuY29tL29yaWdpbl9jYS5j
+cmwwDQYJKoZIhvcNAQELBQADggEBABxsVMUwVjMLZGxfffsQ15ERbAfkGItL8TxP
+AfsIN9BTefx9jdg4/yTMLwmW8jDZ+adBURAtHy72+Z7U1r4E0I6rfNQNTn/ZsgzP
+V8LTppw0kbofxM4wV4SJrbeSUL1efSvwo6CYTL7d/wFrikvhMQKfW5FQ+jdMLK6Y
+Hg+k0T34MMhX+/ADyfoVqQbouKs8OYTX79y1eaEEmaYYSXl94FFgGSKyjojjyBe9
+aPYcfb+tD9xkrD337/plHeAKv3O2Dcb3OYeGBh8//yu7OUSaeSNZXLR/1lBOj/AU
+qjifCQxxvrvdTayFHXySBDUIG8FwHJoakwL8mQbzFppy6F6TTCM=
+-----END CERTIFICATE-----' > cert1.pem
+echo '-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDMmMF5K6EIDhgT
+00Be43hFF1hmFxaJNVnhwVUSyRnD0CsevhaKzleLXFTOG2ldr2hA+cQh1/V96FFg
+iYFvN3JmPLJwCMlv165zPaLvj/6qsWe5XGrSuG4Bd9D4rr6h7KPjOq1E/gorWeSP
+1KvcbzRt7uSkD4YttScOOZr0XSAu+Bh5uM2iK5DR+38n7LZC/xKaPysneMil8qrh
+B/DQwkFdyFT/UL70hkO4nK2EEgQRbtiBhjreViG3Lb2AUwtfLc0aEgpd6k2k9gJ8
+C/YuZU+IXk3/EB+KkPOx/f0QaId9iyjU+hSGurWBHV7FcV/qQg0OR7E2g7XiKgAY
+0qqOEE5BAgMBAAECggEAXKOsMvvk0btj/pIQWwa/XfVoou1AWIdON/Ds3vEs1+OJ
+qsViep5cuG7pvVtfFbsHRyhwvOxGraiENGR+tYeTJqTEHQN1hk1QIcEeZj+6jbp/
+X0hv3BMDSGnitr+U9MesG4bljtBCdYeh/NhMqya1RDO/1mNrG4YjdYby2UPTf0Aq
+u9oCmSL8c82hLZHSmIeyKZRl528zBROZOQYofU8Ry+5O+ZVWKHZRq7W90OFlWLa6
+Qz/KfNGQ2ZVJwteV6f8Z8TMZlKpWmNLJO+vdS097fQfDITQcjH5LTiDj1oxkiHqM
+1BbDWMK9BZFBzgmuiGH2LXs1nxCY2alaZiW33eNXiwKBgQDntsGxlaZlMI2KEIK5
+4DRqkmKH/uE3IqBN/g4IdqB9ZctBfPDph/rdCrfxI8ix0fuU1wV+MWuS390Zr3y+
+4N8Iyj3BJdti8anz8fGaXOQ/bEEAGusl1YOYfja4Tsu+GxpqMzk4NJIBk6W9AtKA
+8hPRFprBNbPj9GrqCOmNo0VsBwKBgQDiCmcfQ/b8HYBb2pKR4z1n6Jw6kSmeVr7O
+HlAz5xqpCis/ldEYOnlYAS2+0QV5CJqXJQ+cJqVqe0ga2nmG3wP3r9wPjv4a3hMj
+3Qu4oTeAtnlcZLNxWVcv86gx1E8w5EDloyikqf9qjG72gSAArbwI3/yoe8c7jxk7
+mi2EDARxdwKBgAjAKyJ0v1r08XN0WiuA3xnjO1tdcc3uPdWUMZ16NWdm770iZcq7
++upcHEQ8ELk+b9zYHfn9Dc33LFdq/DANN/8R/DEOJ/HdpIh066Xjui72/KFvYtAD
+9ztMEO728tTUGzRFiPSpb5YlqE2yDJcYDU2JKAEB8TA7q8n42jEiKF4DAoGAbsl8
+e4V7M1xeQibhuaEvwpLup4HobRPFFw8ibh3yIjG6usJ6Ji7atHh3bFPUI9tEsZnX
+icgjQQpFb+vurlz1+9r0t6d1AcQgi25WxVo28t38o30zufV41ybMJAgT/DmTWTnb
+vMEZT6ae6DCnd82vIIZvtkBciON9EYpijpq5PscCgYBW+fzFTH49eWjBJkuKsObi
+AuIsHORtDk/h0oRfP4XuzE+oOA+1WR137S2epOQSr5VIMTr6f5CZ8SIH4B3KnIkL
+E6CUSAhTtiAeETfITA8RRALS3Pdo9xLlo+Jxilqp95YaBymipC0UAa6z4yv85aFi
+xY6eMWzLxqiQOG/xPaWwbQ==
+-----END PRIVATE KEY-----' > key1.pem
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo wget https://download.nextcloud.com/server/releases/latest-25.zip -P /var/www/
+cd /var/www/
+sudo unzip -q latest-25.zip
+sudo rm latest-25.zip
+sudo chown -R www-data:www-data nextcloud
+cd /etc/nginx/sites-available/
+sudo rm default
+sudo rm /etc/nginx/sites-enabled/default
+echo 'upstream php-handler {
+        server unix:/var/run/php/php7.4-fpm.sock;
+}
+server {
+        listen 80;
+        listen [::]:80;
+        server_name ritesh.aaochat.com;
+	# Redirect non-HTTPS traffic to HTTPS
+        return 301 https://$server_name:443$request_uri;
+ #       root /var/www/nextcloud;
+ #      index index.php index.html /index.php$request_uri;
+	}
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        server_name ritesh.aaochat.com; 
+        ssl_certificate /home/ubuntu/ssl/cert1.pem;
+        ssl_certificate_key /home/ubuntu/ssl/key1.pem;
+        root /var/www/nextcloud;
+        index index.php index.html /index.php$request_uri;
+         # Limit Upload Size
+        client_max_body_size 512M;
+        fastcgi_buffers 64 4K;
+        # Gzip Compression
+        gzip on;
+        gzip_vary on;
+        gzip_comp_level 4;
+        gzip_min_length 256;
+        gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
+        gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+        # Recommended Security Headers
+        add_header Referrer-Policy                      "no-referrer"   always;
+        add_header X-Content-Type-Options               "nosniff"       always;
+        add_header X-Download-Options                   "noopen"        always;
+        add_header X-Frame-Options                      "SAMEORIGIN"    always;
+        add_header X-Permitted-Cross-Domain-Policies    "none"          always;
+        add_header X-Robots-Tag                         "none"          always;
+        add_header X-XSS-Protection                     "1; mode=block" always;
+        fastcgi_hide_header X-Powered-By;
+        # Recommended Hidden Paths
+        location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
+        location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)              { return 404; }
+        location ~ \.php(?:$|/) {
+                fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+                set $path_info $fastcgi_path_info;
+                try_files $fastcgi_script_name =404;
+                fastcgi_param HTTPS on;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                fastcgi_param PATH_INFO $path_info;
+                fastcgi_param modHeadersAvailable true;
+                fastcgi_param front_controller_active true;
+                fastcgi_pass php-handler;
+                fastcgi_intercept_errors on;
+                fastcgi_request_buffering off;
+                include fastcgi_params;
+                proxy_connect_timeout 600s;
+                proxy_send_timeout 600s;
+                proxy_read_timeout 600s;
+                fastcgi_send_timeout 600s;
+                fastcgi_read_timeout 600s;
+        }
+        # Cache-Control on Assets
+        location ~ \.(?:css|js|woff2?|svg|gif|map)$ {
+                try_files $uri /index.php$request_uri;
+                add_header Cache-Control "public, max-age=15778463";
+                expires 6M;
+        }
+        location ~ \.(?:png|html|ttf|ico|jpg|jpeg|bcmap)$ {
+                try_files $uri /index.php$request_uri;
+        }
+        location / {
+                try_files $uri $uri/ /index.php$request_uri;
+        }
+}' > nextcloud
+sudo ln -s /etc/nginx/sites-available/nextcloud -t /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+# If /root/.my.cnf exists then it won't ask for root password
+# if [ -f /root/.my.cnf ]; then
+
+    mysql -e "CREATE DATABASE nextcloud /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+    mysql -e "CREATE USER nextcloud_user@localhost IDENTIFIED BY 'Adm1n@Nextcloud';"
+    mysql -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud_user'@'localhost';"
+    mysql -e "FLUSH PRIVILEGES;"
+	exit
+sudo systemctl restart nginx
